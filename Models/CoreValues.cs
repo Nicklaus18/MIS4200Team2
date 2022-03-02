@@ -22,5 +22,6 @@ namespace MIS4200Team2.Models
         public string DescriptionValue6 { get; set; }
         public string CoreValue7 { get; set; }
         public string DescriptionValue7 { get; set; }
+        ICollection<Recognition> recognitions { get; set; }
     }
 }

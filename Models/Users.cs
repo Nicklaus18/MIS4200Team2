@@ -21,6 +21,7 @@ namespace MIS4200Team2.Models
         public string email { get; set; }
         public string phone { get; set; }
         public DateTime registeredDate { get; set; }
+        ICollection<Recognition> recognitions { get; set; }
 
     }
 }
