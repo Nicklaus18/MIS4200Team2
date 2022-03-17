@@ -11,55 +11,57 @@ using MIS4200Team2.Models;
 
 namespace MIS4200Team2.Controllers
 {
-    public class CoreValuesController : Controller
+    public class UsersController : Controller
     {
         private MIS4200Team2Context db = new MIS4200Team2Context();
 
-        // GET: CoreValues 
+        // GET: Users
         public ActionResult Index()
         {
-            return View(db.CoreValues.ToList());
+            return View(db.Users.ToList());
         }
 
-        // GET: CoreValues/Details/5
+        // GET: Users/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CoreValues coreValues = db.CoreValues.Find(id);
-            if (coreValues == null)
+            Users users = db.Users.Find(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(coreValues);
+            return View(users);
         }
 
-        // GET: CoreValues/Create
+        // GET: Users/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CoreValues/Create
+        // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CoreValuesID,CoreValue1,DescriptionValue1,CoreValue2,DescriptionValue2,CoreValue3,DescriptionValue3,CoreValue4,DescriptionValue4,CoreValue5,DescriptionValue5,CoreValue6,DescriptionValue6,CoreValue7,DescriptionValue7")] CoreValues coreValues)
+        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,email,phone,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
-                db.CoreValues.Add(coreValues);
+                db.Users.Add(users);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(coreValues);
+            return View(users);
         }
 
-        // GET: CoreValues/Edit/5
+        // GET: Users/Edit/5
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -67,52 +69,53 @@ namespace MIS4200Team2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CoreValues coreValues = db.CoreValues.Find(id);
-            if (coreValues == null)
+            Users users = db.Users.Find(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(coreValues);
+            return View(users);
         }
 
-        // POST: CoreValues/Edit/5
+        // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CoreValuesID,CoreValue1,DescriptionValue1,CoreValue2,DescriptionValue2,CoreValue3,DescriptionValue3,CoreValue4,DescriptionValue4,CoreValue5,DescriptionValue5,CoreValue6,DescriptionValue6,CoreValue7,DescriptionValue7")] CoreValues coreValues)
+        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,email,phone,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(coreValues).State = EntityState.Modified;
+                db.Entry(users).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(coreValues);
+            return View(users);
         }
 
-        // GET: CoreValues/Delete/5
+        // GET: Users/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CoreValues coreValues = db.CoreValues.Find(id);
-            if (coreValues == null)
+            Users users = db.Users.Find(id);
+            if (users == null)
             {
                 return HttpNotFound();
             }
-            return View(coreValues);
+            return View(users);
         }
 
-        // POST: CoreValues/Delete/5
+        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CoreValues coreValues = db.CoreValues.Find(id);
-            db.CoreValues.Remove(coreValues);
+            Users users = db.Users.Find(id);
+            db.Users.Remove(users);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
