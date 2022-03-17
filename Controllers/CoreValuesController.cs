@@ -15,7 +15,7 @@ namespace MIS4200Team2.Controllers
     {
         private MIS4200Team2Context db = new MIS4200Team2Context();
 
-        // GET: CoreValues
+        // GET: CoreValues 
         public ActionResult Index()
         {
             return View(db.CoreValues.ToList());
