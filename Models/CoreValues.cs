@@ -7,7 +7,7 @@ namespace MIS4200Team2.Models
 {
     public class CoreValues
     {
-        public int ValueID { get; set; }
+        public int CoreValuesID { get; set; }
         public string CoreValue1 { get; set; }
         public string DescriptionValue1 { get; set; }
         public string CoreValue2 { get; set; }

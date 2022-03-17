@@ -1,0 +1,111 @@
+﻿@model IEnumerable<MIS4200Team2.Models.CoreValues>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoreValue7)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescriptionValue7)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoreValue7)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescriptionValue7)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CoreValuesID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CoreValuesID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CoreValuesID })
+        </td>
+    </tr>
+}
+
+</table>

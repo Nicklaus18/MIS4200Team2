@@ -7,7 +7,7 @@ namespace MIS4200Team2.Models
 {
     public class Users
     {
-        public int userID { get; set; }
+        public int UsersID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string fullName
