@@ -47,9 +47,9 @@
             @Html.DisplayFor(modelItem => item.registeredDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UsersID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UsersID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UsersID })
+            <span class="glyphicon glyphicon-edit"></span>@Html.ActionLink("Edit", "Edit", new { id=item.UsersID }) |
+            <span class="glyphicon glyphicon-book"></span>@Html.ActionLink("Details", "Details", new { id=item.UsersID }) |
+            <span class="glyphicon glyphicon-trash"></span>@Html.ActionLink("Delete", "Delete", new { id=item.UsersID })
         </td>
     </tr>
 }
