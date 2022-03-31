@@ -15,9 +15,7 @@ namespace MIS4200Team2.Controllers
     {
         private MIS4200Team2Context db = new MIS4200Team2Context();
 
-        public int IDataRecord { get; private set; }
-
-        // GET: CoreValues 
+        // GET: CoreValues
         public ActionResult Index()
         {
             return View(db.CoreValues.ToList());
@@ -30,7 +28,7 @@ namespace MIS4200Team2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CoreValues coreValues = db.CoreValues.Find(1);
+            CoreValues coreValues = db.CoreValues.Find(id);
             if (coreValues == null)
             {
                 return HttpNotFound();
@@ -49,7 +47,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CoreValuesID,CoreValue1,DescriptionValue1,CoreValue2,DescriptionValue2,CoreValue3,DescriptionValue3,CoreValue4,DescriptionValue4,CoreValue5,DescriptionValue5,CoreValue6,DescriptionValue6,CoreValue7,DescriptionValue7")] CoreValues coreValues)
+        public ActionResult Create([Bind(Include = "CoreValuesID,CoreValue,DescriptionValue")] CoreValues coreValues)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +60,6 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: CoreValues/Edit/5
-        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,7 +79,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CoreValuesID,CoreValue1,DescriptionValue1,CoreValue2,DescriptionValue2,CoreValue3,DescriptionValue3,CoreValue4,DescriptionValue4,CoreValue5,DescriptionValue5,CoreValue6,DescriptionValue6,CoreValue7,DescriptionValue7")] CoreValues coreValues)
+        public ActionResult Edit([Bind(Include = "CoreValuesID,CoreValue,DescriptionValue")] CoreValues coreValues)
         {
             if (ModelState.IsValid)
             {

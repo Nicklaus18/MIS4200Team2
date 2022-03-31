@@ -11,18 +11,18 @@ using MIS4200Team2.Models;
 
 namespace MIS4200Team2.Controllers
 {
-    public class RecognitionController : Controller
+    public class RecognitionsController : Controller
     {
         private MIS4200Team2Context db = new MIS4200Team2Context();
 
-        // GET: Recognition
+        // GET: Recognitions
         public ActionResult Index()
         {
-            return View(db.Recognitions.ToList());
+            var recognitions = db.Recognitions.Include(r => r.CoreValues).Include(r => r.Users);
+            return View(recognitions.ToList());
         }
 
-        // GET: Recognition/Details/5
-        [Authorize]
+        // GET: Recognitions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,19 +37,20 @@ namespace MIS4200Team2.Controllers
             return View(recognition);
         }
 
-        // GET: Recognition/Create
-        [Authorize]
+        // GET: Recognitions/Create
         public ActionResult Create()
         {
+            ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue");
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName");
             return View();
         }
 
-        // POST: Recognition/Create
+        // POST: Recognitions/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RecognitionID,userID,ValueID")] Recognition recognition)
+        public ActionResult Create([Bind(Include = "RecognitionID,UsersID,CoreValuesID,descriptionOfValue")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -58,11 +59,12 @@ namespace MIS4200Team2.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue", recognition.CoreValuesID);
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName", recognition.UsersID);
             return View(recognition);
         }
 
-        // GET: Recognition/Edit/5
-        [Authorize]
+        // GET: Recognitions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,15 +76,17 @@ namespace MIS4200Team2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue", recognition.CoreValuesID);
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName", recognition.UsersID);
             return View(recognition);
         }
 
-        // POST: Recognition/Edit/5
+        // POST: Recognitions/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecognitionID,userID,ValueID")] Recognition recognition)
+        public ActionResult Edit([Bind(Include = "RecognitionID,UsersID,CoreValuesID,descriptionOfValue")] Recognition recognition)
         {
             if (ModelState.IsValid)
             {
@@ -90,11 +94,12 @@ namespace MIS4200Team2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue", recognition.CoreValuesID);
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName", recognition.UsersID);
             return View(recognition);
         }
 
-        // GET: Recognition/Delete/5
-        [Authorize]
+        // GET: Recognitions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +114,7 @@ namespace MIS4200Team2.Controllers
             return View(recognition);
         }
 
-        // POST: Recognition/Delete/5
+        // POST: Recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

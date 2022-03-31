@@ -173,12 +173,13 @@
     <Compile Include="Controllers\CoreValuesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RecognitionController.cs" />
+    <Compile Include="Controllers\RecognitionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\MIS4200Team2.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\SampleContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CoreValues.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -244,21 +245,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\CoreValues\Create.cshtml" />
-    <Content Include="Views\CoreValues\Delete.cshtml" />
-    <Content Include="Views\CoreValues\Details.cshtml" />
-    <Content Include="Views\CoreValues\Edit.cshtml" />
-    <Content Include="Views\CoreValues\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Recognition\Create.cshtml" />
-    <Content Include="Views\Recognition\Delete.cshtml" />
-    <Content Include="Views\Recognition\Details.cshtml" />
-    <Content Include="Views\Recognition\Edit.cshtml" />
-    <Content Include="Views\Recognition\Index.cshtml" />
+    <Content Include="Views\CoreValues\Create.cshtml" />
+    <Content Include="Views\CoreValues\Delete.cshtml" />
+    <Content Include="Views\CoreValues\Details.cshtml" />
+    <Content Include="Views\CoreValues\Edit.cshtml" />
+    <Content Include="Views\CoreValues\Index.cshtml" />
+    <Content Include="Views\Recognitions\Create.cshtml" />
+    <Content Include="Views\Recognitions\Delete.cshtml" />
+    <Content Include="Views\Recognitions\Details.cshtml" />
+    <Content Include="Views\Recognitions\Edit.cshtml" />
+    <Content Include="Views\Recognitions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

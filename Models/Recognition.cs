@@ -9,13 +9,14 @@ namespace MIS4200Team2.Models
     public class Recognition
     {
         public int RecognitionID { get; set; }
-        [Display(Name = "User")]
-        public int userID { get; set; }
+        [Display(Name = "User Name")]
+        public int UsersID { get; set; }
         [Display(Name = "Core Value")]
-        public int ValueID { get; set; }
-
-        public virtual CoreValues CoreValues { get; set; }
+        public int CoreValuesID { get; set; }
+        [Display(Name = "Reason")]
+        public string descriptionOfValue { get; set; }
         public virtual Users Users { get; set; }
-
+        public virtual CoreValues CoreValues { get; set; }
+        
     }
 }
