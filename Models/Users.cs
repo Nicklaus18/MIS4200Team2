@@ -26,7 +26,7 @@ namespace MIS4200Team2.Models
         public string email { get; set; }
         [Display(Name = "Phone")]
         public string phone { get; set; }
-        [Display(Name = "Date Registered")]
+        [Display(Name = "Date Hire")]
         public DateTime registeredDate { get; set; }
         ICollection<Recognition> recognitions { get; set; }
 
