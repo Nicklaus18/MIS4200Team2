@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200Team2.DAL;
 using MIS4200Team2.Models;
 
@@ -42,8 +43,9 @@ namespace MIS4200Team2.Controllers
         [Authorize]
         public ActionResult Create()
         {
+
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue");
-            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName");
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName"); 
             return View();
         }
 
