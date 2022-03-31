@@ -23,6 +23,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +39,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue");
@@ -50,6 +52,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create([Bind(Include = "RecognitionID,UsersID,CoreValuesID,descriptionOfValue")] Recognition recognition)
         {
             if (ModelState.IsValid)
@@ -65,6 +68,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -86,6 +90,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "RecognitionID,UsersID,CoreValuesID,descriptionOfValue")] Recognition recognition)
         {
             if (ModelState.IsValid)
@@ -100,6 +105,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -117,6 +123,7 @@ namespace MIS4200Team2.Controllers
         // POST: Recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Recognition recognition = db.Recognitions.Find(id);
