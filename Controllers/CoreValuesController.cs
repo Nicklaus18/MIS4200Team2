@@ -15,6 +15,8 @@ namespace MIS4200Team2.Controllers
     {
         private MIS4200Team2Context db = new MIS4200Team2Context();
 
+        public int IDataRecord { get; private set; }
+
         // GET: CoreValues 
         public ActionResult Index()
         {
@@ -28,7 +30,7 @@ namespace MIS4200Team2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CoreValues coreValues = db.CoreValues.Find(id);
+            CoreValues coreValues = db.CoreValues.Find(1);
             if (coreValues == null)
             {
                 return HttpNotFound();
