@@ -49,7 +49,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,email,phone,registeredDate")] Users users)
+        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,email,phone,businessUnit,userTitle,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,email,phone,registeredDate")] Users users)
+        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,email,phone,businessUnit, userTitle, registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {

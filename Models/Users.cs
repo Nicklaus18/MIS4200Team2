@@ -24,6 +24,10 @@ namespace MIS4200Team2.Models
 
         [Display(Name = "Email")]
         public string email { get; set; }
+        [Display(Name = "Business Unit")]
+        public string businessUnit { get; set; }
+        [Display(Name = "Title")]
+        public string userTitle { get; set; }
         [Display(Name = "Phone")]
         public string phone { get; set; }
         [Display(Name = "Date Hire")]
