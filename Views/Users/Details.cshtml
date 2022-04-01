@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>User Details</h2>
+<h2>Details</h2>
 
 <div>
     <h4>Users</h4>
@@ -35,14 +35,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.businessUnit)
         </dt>
 
@@ -56,6 +48,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.userTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
         </dd>
 
         <dt>

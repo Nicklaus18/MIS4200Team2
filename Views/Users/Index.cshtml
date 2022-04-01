@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Users at Centric</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table table-bordered table-hover table-striped">
+<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.firstName)
@@ -21,13 +21,13 @@
             @Html.DisplayNameFor(model => model.email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.phone)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.businessUnit)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.userTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.registeredDate)
@@ -36,34 +36,34 @@
     </tr>
 
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.firstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.lastName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.phone)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.businessUnit)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.userTitle)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.registeredDate)
-    </td>
-    <td>
-        <span class="glyphicon glyphicon-edit"></span>@Html.ActionLink("Edit", "Edit", new { id = item.UsersID }) |
-        <span class="glyphicon glyphicon-book"></span>@Html.ActionLink("Details", "Details", new { id = item.UsersID }) |
-        <span class="glyphicon glyphicon-trash"></span>@Html.ActionLink("Delete", "Delete", new { id = item.UsersID })
-    </td>
-</tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.businessUnit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.userTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.registeredDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UsersID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UsersID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UsersID })
+        </td>
+    </tr>
 }
 
 </table>

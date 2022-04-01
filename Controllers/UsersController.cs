@@ -22,8 +22,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Details/5
-        [Authorize]
-        public ActionResult Details(int? id)
+        public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
@@ -38,7 +37,6 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Create
-        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -49,10 +47,11 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,email,phone,businessUnit,userTitle,registeredDate")] Users users)
+        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,email,businessUnit,userTitle,phone,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
+                users.UsersID = Guid.NewGuid();
                 db.Users.Add(users);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -62,8 +61,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Edit/5
-        [Authorize]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -82,7 +80,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,email,phone,businessUnit, userTitle, registeredDate")] Users users)
+        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,email,businessUnit,userTitle,phone,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +92,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Delete/5
-        [Authorize]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
@@ -112,7 +109,7 @@ namespace MIS4200Team2.Controllers
         // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(Guid id)
         {
             Users users = db.Users.Find(id);
             db.Users.Remove(users);
