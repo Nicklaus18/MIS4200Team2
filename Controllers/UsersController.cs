@@ -22,6 +22,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Details/5
+        [Authorize]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -37,6 +38,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -61,6 +63,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -92,6 +95,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)

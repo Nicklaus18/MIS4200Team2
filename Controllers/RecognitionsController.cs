@@ -39,6 +39,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             string UserID = User.Identity.GetUserId();
@@ -75,6 +76,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -127,6 +129,7 @@ namespace MIS4200Team2.Controllers
         // POST: Recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Recognition recognition = db.Recognitions.Find(id);
