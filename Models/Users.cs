@@ -8,7 +8,7 @@ namespace MIS4200Team2.Models
 {
     public class Users
     {
-        public int UsersID { get; set; }
+        public Guid UsersID { get; set; }
         [Display(Name = "First Name")]
         public string firstName { get; set; }
         [Display(Name = "Last Name")]

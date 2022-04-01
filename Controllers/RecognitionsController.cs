@@ -68,13 +68,8 @@ namespace MIS4200Team2.Controllers
                 return RedirectToAction("Index");
             }
 
-            string UsersID = User.Identity.GetUserId();
-            SelectList Users = new SelectList(db.Users, "UsersID", "fullName");
-            Users = new SelectList(Users.Where(x => x.Value != UsersID).ToList(), "Value", "Text");
-            ViewBag.UsersID = Users;
-
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue", recognition.CoreValuesID);
-           // ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName", recognition.UsersID);
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "fullName", recognition.UsersID);
             return View(recognition);
         }
 
