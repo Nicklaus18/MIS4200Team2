@@ -32,7 +32,8 @@ namespace MIS4200Team2.Models
         public string phone { get; set; }
         [Display(Name = "Date Hire")]
         public DateTime registeredDate { get; set; }
+        [Display(Name = "Amount of Recognitions")]
         ICollection<Recognition> recognitions { get; set; }
-
+        
     }
 }
