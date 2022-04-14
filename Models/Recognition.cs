@@ -9,7 +9,7 @@ namespace MIS4200Team2.Models
     public class Recognition
     {
         public int RecognitionID { get; set; }
-        [Display(Name = "User Name")]
+        [Display(Name = "User")]
         public Guid UsersID { get; set; }
         [Display(Name = "Core Value")]
         public int CoreValuesID { get; set; }

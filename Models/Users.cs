@@ -13,7 +13,7 @@ namespace MIS4200Team2.Models
         public string firstName { get; set; }
         [Display(Name = "Last Name")]
         public string lastName { get; set; }
-        [Display(Name = "User Name")]
+        [Display(Name = "User")]
         public string fullName
         { 
             get
