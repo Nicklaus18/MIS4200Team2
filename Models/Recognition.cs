@@ -17,6 +17,6 @@ namespace MIS4200Team2.Models
         public string descriptionOfValue { get; set; }
         public virtual Users Users { get; set; }
         public virtual CoreValues CoreValues { get; set; }
-        
+
     }
 }

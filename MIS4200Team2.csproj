@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BusinessUnitsController.cs" />
     <Compile Include="Controllers\CoreValuesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -181,6 +182,7 @@
     </Compile>
     <Compile Include="Migrations\SampleContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BusinessUnit.cs" />
     <Compile Include="Models\CoreValues.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -260,6 +262,11 @@
     <Content Include="Views\Recognitions\Details.cshtml" />
     <Content Include="Views\Recognitions\Edit.cshtml" />
     <Content Include="Views\Recognitions\Index.cshtml" />
+    <Content Include="Views\BusinessUnits\Create.cshtml" />
+    <Content Include="Views\BusinessUnits\Delete.cshtml" />
+    <Content Include="Views\BusinessUnits\Details.cshtml" />
+    <Content Include="Views\BusinessUnits\Edit.cshtml" />
+    <Content Include="Views\BusinessUnits\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

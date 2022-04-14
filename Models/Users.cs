@@ -34,6 +34,8 @@ namespace MIS4200Team2.Models
         public DateTime registeredDate { get; set; }
         [Display(Name = "Amount of Recognitions")]
         ICollection<Recognition> recognitions { get; set; }
-        
+
+        public virtual BusinessUnit BusinessUnit { get; set; }
+
     }
 }
