@@ -21,13 +21,16 @@ namespace MIS4200Team2.Models
                 return firstName + ", " + lastName;
             }
         }
+       
+        [Display(Name = "Business Unit")]
+        public int BusinessUnitID { get; set; }
+
+        [Display(Name = "Title")]
+        public int usertitleID { get; set; }
 
         [Display(Name = "Email")]
         public string email { get; set; }
-        [Display(Name = "Business Unit")]
-        public string businessUnit { get; set; }
-        [Display(Name = "Title")]
-        public string userTitle { get; set; }
+
         [Display(Name = "Phone")]
         public string phone { get; set; }
         [Display(Name = "Date Hire")]
@@ -35,7 +38,9 @@ namespace MIS4200Team2.Models
         [Display(Name = "Amount of Recognitions")]
         ICollection<Recognition> recognitions { get; set; }
 
-        public virtual BusinessUnit BusinessUnit { get; set; }
+        public virtual BusinessUnit businessUnit { get; set; }
+
+        public virtual userTitle usertitles { get; set; }
 
     }
 }

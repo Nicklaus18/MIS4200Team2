@@ -11,107 +11,107 @@ using MIS4200Team2.Models;
 
 namespace MIS4200Team2.Controllers
 {
-    public class BusinessUnitsController : Controller
+    public class userTitlesController : Controller
     {
         private MIS4200Team2Context db = new MIS4200Team2Context();
 
-        // GET: BusinessUnits
+        // GET: userTitles
         public ActionResult Index()
         {
-            return View(db.BusinessUnits.ToList());
+            return View(db.userTitles.ToList());
         }
 
-        // GET: BusinessUnits/Details/5
+        // GET: userTitles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BusinessUnit businessUnit = db.BusinessUnits.Find(id);
-            if (businessUnit == null)
+            userTitle userTitle = db.userTitles.Find(id);
+            if (userTitle == null)
             {
                 return HttpNotFound();
             }
-            return View(businessUnit);
+            return View(userTitle);
         }
 
-        // GET: BusinessUnits/Create
+        // GET: userTitles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: BusinessUnits/Create
+        // POST: userTitles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BusinessUnitID,unit")] BusinessUnit businessUnit)
+        public ActionResult Create([Bind(Include = "usertitleID,titleUser")] userTitle userTitle)
         {
             if (ModelState.IsValid)
             {
-                db.BusinessUnits.Add(businessUnit);
+                db.userTitles.Add(userTitle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(businessUnit);
+            return View(userTitle);
         }
 
-        // GET: BusinessUnits/Edit/5
+        // GET: userTitles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BusinessUnit businessUnit = db.BusinessUnits.Find(id);
-            if (businessUnit == null)
+            userTitle userTitle = db.userTitles.Find(id);
+            if (userTitle == null)
             {
                 return HttpNotFound();
             }
-            return View(businessUnit);
+            return View(userTitle);
         }
 
-        // POST: BusinessUnits/Edit/5
+        // POST: userTitles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BusinessUnitID,unit")] BusinessUnit businessUnit)
+        public ActionResult Edit([Bind(Include = "usertitleID,titleUser")] userTitle userTitle)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(businessUnit).State = EntityState.Modified;
+                db.Entry(userTitle).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(businessUnit);
+            return View(userTitle);
         }
 
-        // GET: BusinessUnits/Delete/5
+        // GET: userTitles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BusinessUnit businessUnit = db.BusinessUnits.Find(id);
-            if (businessUnit == null)
+            userTitle userTitle = db.userTitles.Find(id);
+            if (userTitle == null)
             {
                 return HttpNotFound();
             }
-            return View(businessUnit);
+            return View(userTitle);
         }
 
-        // POST: BusinessUnits/Delete/5
+        // POST: userTitles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BusinessUnit businessUnit = db.BusinessUnits.Find(id);
-            db.BusinessUnits.Remove(businessUnit);
+            userTitle userTitle = db.userTitles.Find(id);
+            db.userTitles.Remove(userTitle);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

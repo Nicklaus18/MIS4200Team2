@@ -18,5 +18,7 @@ namespace MIS4200Team2.DAL
         public DbSet<Recognition> Recognitions { get; set; }
 
         public System.Data.Entity.DbSet<MIS4200Team2.Models.BusinessUnit> BusinessUnits { get; set; }
+
+        public System.Data.Entity.DbSet<MIS4200Team2.Models.userTitle> userTitles { get; set; }
     }
 }

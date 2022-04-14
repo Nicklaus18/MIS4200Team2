@@ -18,7 +18,8 @@ namespace MIS4200Team2.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var users = db.Users.Include(u => u.businessUnit).Include(u => u.usertitles);
+            return View(users.ToList());
         }
 
         // GET: Users/Details/5
@@ -41,6 +42,8 @@ namespace MIS4200Team2.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            ViewBag.BusinessUnitID = new SelectList(db.BusinessUnits, "BusinessUnitID", "unit");
+            ViewBag.usertitleID = new SelectList(db.userTitles, "usertitleID", "titleUser");
             return View();
         }
 
@@ -49,7 +52,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,email,businessUnit,userTitle,phone,registeredDate")] Users users)
+        public ActionResult Create([Bind(Include = "UsersID,firstName,lastName,BusinessUnitID,usertitleID,email,phone,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +62,8 @@ namespace MIS4200Team2.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.BusinessUnitID = new SelectList(db.BusinessUnits, "BusinessUnitID", "unit", users.BusinessUnitID);
+            ViewBag.usertitleID = new SelectList(db.userTitles, "usertitleID", "titleUser", users.usertitleID);
             return View(users);
         }
 
@@ -75,6 +80,8 @@ namespace MIS4200Team2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.BusinessUnitID = new SelectList(db.BusinessUnits, "BusinessUnitID", "unit", users.BusinessUnitID);
+            ViewBag.usertitleID = new SelectList(db.userTitles, "usertitleID", "titleUser", users.usertitleID);
             return View(users);
         }
 
@@ -83,7 +90,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,email,businessUnit,userTitle,phone,registeredDate")] Users users)
+        public ActionResult Edit([Bind(Include = "UsersID,firstName,lastName,BusinessUnitID,usertitleID,email,phone,registeredDate")] Users users)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +98,8 @@ namespace MIS4200Team2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.BusinessUnitID = new SelectList(db.BusinessUnits, "BusinessUnitID", "unit", users.BusinessUnitID);
+            ViewBag.usertitleID = new SelectList(db.userTitles, "usertitleID", "titleUser", users.usertitleID);
             return View(users);
         }
 
