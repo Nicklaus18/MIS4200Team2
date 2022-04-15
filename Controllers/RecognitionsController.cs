@@ -39,16 +39,14 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Create
-        [Authorize]
         public ActionResult Create()
         {
-            string UserID = User.Identity.GetUserId();
-            SelectList Users = new SelectList(db.Users, "UsersID", "fullName");
-            Users = new SelectList(Users.Where(x => x.Value != UserID).ToList(), "Value", "Text");
-            ViewBag.UserID = Users;
-
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue");
-           // ViewBag.UsersID = new SelectList(db.Users, "UsersID", "firstName");
+            //ViewBag.UsersID = new SelectList(db.Users, "UsersID", "firstName");
+            string usersID = User.Identity.GetUserId();
+            SelectList users = new SelectList(db.Users, "UsersID", "fullName");
+            users = new SelectList(users.Where(x => x.Value != usersID).ToList(), "Value", "Text");
+            ViewBag.UsersID = users;
             return View();
         }
 
@@ -66,17 +64,12 @@ namespace MIS4200Team2.Controllers
                 return RedirectToAction("Index");
             }
 
-            string UserID = User.Identity.GetUserId();
-            SelectList Users = new SelectList(db.Users, "UsersID", "fullName");
-            Users = new SelectList(Users.Where(x => x.Value != UserID).ToList(), "Value", "Text");
-            ViewBag.UserID = Users;
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue", recognition.CoreValuesID);
-            //ViewBag.UsersID = new SelectList(db.Users, "UsersID", "firstName", recognition.UsersID);
+            ViewBag.UsersID = new SelectList(db.Users, "UsersID", "firstName", recognition.UsersID);
             return View(recognition);
         }
 
         // GET: Recognitions/Edit/5
-        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -129,7 +122,6 @@ namespace MIS4200Team2.Controllers
         // POST: Recognitions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             Recognition recognition = db.Recognitions.Find(id);
