@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MIS4200Team2.DAL;
 using MIS4200Team2.Models;
 
@@ -56,7 +57,10 @@ namespace MIS4200Team2.Controllers
         {
             if (ModelState.IsValid)
             {
-                users.UsersID = Guid.NewGuid();
+                Guid ID;
+                Guid.TryParse(User.Identity.GetUserId(), out ID);
+
+                users.UsersID = ID;
                 db.Users.Add(users);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +86,13 @@ namespace MIS4200Team2.Controllers
             }
             ViewBag.BusinessUnitID = new SelectList(db.BusinessUnits, "BusinessUnitID", "unit", users.BusinessUnitID);
             ViewBag.usertitleID = new SelectList(db.userTitles, "usertitleID", "titleUser", users.usertitleID);
-            return View(users);
+            Guid ID;
+            Guid.TryParse(User.Identity.GetUserId(), out ID);
+            if (ID == id)
+            {
+                return View(users);
+            }
+            return View("NotAuthoritzed");
         }
 
         // POST: Users/Edit/5
