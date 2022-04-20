@@ -24,6 +24,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,10 +40,10 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue");
-            //ViewBag.UsersID = new SelectList(db.Users, "UsersID", "firstName");
             string usersID = User.Identity.GetUserId();
             SelectList users = new SelectList(db.Users, "UsersID", "fullName");
             users = new SelectList(users.Where(x => x.Value != usersID).ToList(), "Value", "Text");
@@ -70,6 +71,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,6 +93,7 @@ namespace MIS4200Team2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit([Bind(Include = "RecognitionID,UsersID,CoreValuesID,descriptionOfValue")] Recognition recognition)
         {
             if (ModelState.IsValid)
@@ -105,6 +108,7 @@ namespace MIS4200Team2.Controllers
         }
 
         // GET: Recognitions/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

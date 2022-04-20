@@ -126,7 +126,14 @@ namespace MIS4200Team2.Controllers
             {
                 return HttpNotFound();
             }
-            return View(users);
+            Guid ID;
+            Guid.TryParse(User.Identity.GetUserId(), out ID);
+            if (ID == id)
+            {
+                return View(users);
+            }
+            return View("NotAuthoritzed");
+            
         }
 
         // POST: Users/Delete/5
