@@ -42,7 +42,6 @@ namespace MIS4200Team2.Controllers
         public ActionResult Create()
         {
             ViewBag.CoreValuesID = new SelectList(db.CoreValues, "CoreValuesID", "CoreValue");
-            //ViewBag.UsersID = new SelectList(db.Users, "UsersID", "firstName");
             string usersID = User.Identity.GetUserId();
             SelectList users = new SelectList(db.Users, "UsersID", "fullName");
             users = new SelectList(users.Where(x => x.Value != usersID).ToList(), "Value", "Text");
